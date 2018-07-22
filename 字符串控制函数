@@ -1,0 +1,27 @@
+//早知道有这操作就好了………………
+
+
+函数名: strtok
+功  能: 根据分界符将字符串分割成一个个片段
+用  法: char *strtok(char *s, const char *delim);
+返回值: 返回下一个分割后的字符串指针，如果已无从分割则返回NULL
+说  明: 当strtok()在参数s的字符串中发现到参数delim的分割字符时则会将该字符改为'\0'字符；
+       在第一次调用时，strtok()必须赋予参数s字符串，往后的调用则将参数s设置成NULL；
+程序例:
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[] = "ab-cd : ef";
+    char *delim = "-: ";
+    char *p;
+    printf("%s \n", strtok(s, delim));
+    // 输出：ab
+    //      cd
+    //      ef
+    while((p = strtok(NULL, delim)))
+        printf("%s ", p);
+        printf("\n");
+}
